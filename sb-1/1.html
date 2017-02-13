@@ -5,6 +5,8 @@
   </head>
   <body>
     <script>
+      var lock = new Auth0Lock('I3NbVYRaTw7a33PBkzkdTRf0cWTOpmuy', 'fortune-6.auth0.com');
+
       var callback = window.location.origin+'/signin-test';
       lock.show({
         gravatar: false,
@@ -12,7 +14,7 @@
         responseType: 'code',
         authParams: {
           scope: 'openid profile',
-          state: 'ru=' + returnUrl
+          state: 'ru=test.com'
         },
         resetLink: document.documentElement.lang === 'no' ? window.location.origin + '/passord' : window.location.origin + '/en/passord',
         dict: document.documentElement.lang === 'no' ? 'nb-NO' : 'en',

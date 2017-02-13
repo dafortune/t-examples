@@ -5,31 +5,37 @@
   </head>
   <body>
     <script>
+    // Initiating our Auth0Lock
+    var lock = new Auth0Lock(
+      'I3NbVYRaTw7a33PBkzkdTRf0cWTOpmuy',
+      'fortune-6.auth0.com',
+      {
+        avatar: null,
+        responseType: 'code',
+        closable: true,
+        auth: {
+        redirect: true,
+        redirectUrl: callback,
+        responseType: 'code',
+        params: {
+          scope: 'openid profile',
+          state: 'ru=test.com'
+        }
+        },
+        theme:{
+          logo: 'http://www.rd.com/wp-content/uploads/sites/2/2016/04/01-cat-wants-to-tell-you-laptop.jpg',
+        },
+        initialScreen: 'login',
+        forgotPasswordLink:document.documentElement.lang === 'no' ? window.location.origin + '/passord' : window.location.origin + '/en/passord',
+        language: 'en',
+        languageDictionary: document.documentElement.lang === 'no' ?
+        Auth0NODict : {},
+        allowSignUp: false,
+        allowForgotPassword : true
+      });
+
     var callback = window.location.origin + '/signin-test';
-    lock.show({
-      avatar: null,
-      responseType: 'code',
-      closable: true,
-      auth: {
-      redirect: true,
-      redirectUrl: callback,
-      responseType: 'code',
-      params: {
-        scope: 'openid profile',
-        state: 'ru=' + returnUrl
-      }
-      },
-      theme:{
-        logo: 'http://www.rd.com/wp-content/uploads/sites/2/2016/04/01-cat-wants-to-tell-you-laptop.jpg',
-      },
-      initialScreen: 'login',
-      forgotPasswordLink:document.documentElement.lang === 'no' ? window.location.origin + '/passord' : window.location.origin + '/en/passord',
-      language: 'en',
-      languageDictionary: document.documentElement.lang === 'no' ?
-      Auth0NODict : {},
-      allowSignUp: false,
-      allowForgotPassword : true
-    });
+    lock.show();
     </script>
   </body>
 </html>
