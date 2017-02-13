@@ -1,14 +1,15 @@
 <html>
   <head>
-    <script src="https://cdn.auth0.com/js/lock/10.9/lock.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/8.0.0/auth0.min.js"></script>
+    <script src="https://cdn.auth0.com/js/lock/10.9.0/lock.min.js"></script>
   </head>
   <body>
     <script>
     // Initiating our Auth0Lock
     var lock = new Auth0Lock(
       'I3NbVYRaTw7a33PBkzkdTRf0cWTOpmuy',
-      'fortune-6.auth0.com',
-      {
+      'fortune-6.auth0.com')
+    lock.show({
         avatar: null,
         responseType: 'code',
         closable: true,
